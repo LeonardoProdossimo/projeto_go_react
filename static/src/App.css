@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Estilos do projetoGo */
+.header-small {
+  color: rgb(0, 0, 0);
+  padding: 10px 0;
+  text-align: center;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.header-small h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+#loadingSpinner {
+  z-index: 2050;
+}
+
+/* Estilos para o modal */
+.modal.show {
+  display: block !important;
+}
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para os botões de ação */
+.btn-action {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.btn-action:last-child {
+  margin-right: 0;
+}
+
+.btn-action img {
+  width: 16px;
+  height: 16px;
+}
