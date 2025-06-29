@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Lista from './componentes/Lista';
 import Modal from './componentes/Modal';
+import Confirmacao from './componentes/Confirmacao';
 
 function App() {
   const [times, setTimes] = useState([]);
@@ -9,6 +10,8 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [timeEditando, setTimeEditando] = useState(null);
   const [pesquisa, setPesquisa] = useState('');
+  const [showConfirmacao, setShowConfirmacao] = useState(false);
+  const [timeParaExcluir, setTimeParaExcluir] = useState(null);
 
   const mostrarCarregamento = () => setLoading(true);
   const esconderCarregamento = () => setLoading(false);
@@ -77,9 +80,14 @@ function App() {
   };
 
   const excluir = (id) => {
-    if (window.confirm("Confirma exclusão?")) {
+    setTimeParaExcluir(id);
+    setShowConfirmacao(true);
+  };
+
+  const confirmarExclusao = () => {
+    if (timeParaExcluir) {
       mostrarCarregamento();
-      fetch("http://127.0.0.1:8080/time/" + id, {
+      fetch("http://127.0.0.1:8080/time/" + timeParaExcluir, {
         method: "DELETE"
       })
         .then(resposta => {
@@ -90,12 +98,21 @@ function App() {
         })
         .then(() => {
           listar();
+          setShowConfirmacao(false);
+          setTimeParaExcluir(null);
         })
         .catch(erro => {
           console.error("Erro ao excluir time:", erro);
           esconderCarregamento();
+          setShowConfirmacao(false);
+          setTimeParaExcluir(null);
         });
     }
+  };
+
+  const cancelarExclusao = () => {
+    setShowConfirmacao(false);
+    setTimeParaExcluir(null);
   };
 
   const salvar = (timeData) => {
@@ -188,6 +205,15 @@ function App() {
           time={timeEditando}
           onSalvar={salvar}
           onCancelar={() => setShowModal(false)}
+        />
+      )}
+
+      {showConfirmacao && (
+        <Confirmacao
+          mensagem="Deseja realmente excluir o time?"
+          onConfirmar={confirmarExclusao}
+          onCancelar={cancelarExclusao}
+          visivel={showConfirmacao}
         />
       )}
 

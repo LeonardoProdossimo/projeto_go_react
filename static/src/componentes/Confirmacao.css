@@ -1,0 +1,61 @@
+.confirmacao-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.confirmacao-modal {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 25%;
+  animation: slideIn 0.3s ease-out;
+}
+
+.confirmacao-header {
+  padding: 1rem 1.5rem 0.5rem 1.5rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.confirmacao-header h5 {
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.confirmacao-body {
+  padding: 1rem 1.5rem;
+}
+
+.confirmacao-body p {
+  margin: 0;
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.confirmacao-footer {
+  padding: 0.5rem 1.5rem 1rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 
