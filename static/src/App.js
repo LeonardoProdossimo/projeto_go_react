@@ -139,12 +139,11 @@ function App() {
       .then(() => {
         listar();
         setShowModal(false);
-        esconderCarregamento();
       })
       .catch(erro => {
         console.error("Erro ao salvar time:", erro);
         esconderCarregamento();
-      });
+        });
   };
 
   useEffect(() => {
